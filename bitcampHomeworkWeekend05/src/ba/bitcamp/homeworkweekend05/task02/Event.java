@@ -8,4 +8,6 @@ public class Event {
 	public static final int LOVE = 3;
 	public static final int VENGEANCE = 4;
 	public static final int MANIPULATION = 5;
+	
+	
 }

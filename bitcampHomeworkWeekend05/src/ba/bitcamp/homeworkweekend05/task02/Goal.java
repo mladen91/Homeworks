@@ -6,7 +6,7 @@ import ba.bitcamp.homeworkweekend05.task01.StoryElement;
 public class Goal extends StoryElement {
 
 	private int gameMode;
-	private Event goal;
+	private int goal;
 	private Character eventCharacter;
 
 	// game mode possibility
@@ -28,7 +28,7 @@ public class Goal extends StoryElement {
 	 * @param eventCharacter
 	 *            - character that will be part of event
 	 */
-	public Goal(String name, int weight, Event goal, Character eventCharacter) {
+	public Goal(String name, int weight, int goal, Character eventCharacter) {
 		super(name);
 		this.gameMode = weight;
 		this.goal = goal;
@@ -44,11 +44,11 @@ public class Goal extends StoryElement {
 		this.gameMode = weight;
 	}
 
-	public Event getGoal() {
+	public int getGoal() {
 		return goal;
 	}
 
-	public void setGoal(Event goal) {
+	public void setGoal(int goal) {
 		this.goal = goal;
 	}
 
