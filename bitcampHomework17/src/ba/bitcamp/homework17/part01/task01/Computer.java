@@ -67,15 +67,17 @@ public class Computer {
 		@Override
 		// 01:23:45:67:89:ab
 		public String toString() {
-			char[] macAddress = new char[17];
-			for (int i = 0; i < macAddress.length; i++) {
-				if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14) {
-					macAddress[i] = ':';
-				} else {
-					macAddress[i] = mac[i];
+			String s = "";
+			int counter = 2;
+			for (int i = 0; i < mac.length; i++) {
+				if (i == counter) {
+					s += ":";
+					counter += 2;
 				}
+				s += mac[i];
 			}
-			return "Computer Mac Address is:" + Arrays.toString(macAddress);
+			return s;
+
 		}
 
 	}
