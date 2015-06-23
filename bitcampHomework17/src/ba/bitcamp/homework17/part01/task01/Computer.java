@@ -14,7 +14,7 @@ public class Computer {
 	private MACAddress macAddress;
 
 	/**
-	 * Creating constructor for generating name and mac address
+	 * Creating constructor for generating name and address
 	 * 
 	 * @param name
 	 *            - represents computer name
