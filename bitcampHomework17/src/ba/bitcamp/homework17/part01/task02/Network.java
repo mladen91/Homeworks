@@ -18,8 +18,9 @@ public abstract class Network {
 	 * 
 	 */
 
-	public Network(String networkName, Computer[] arrayComputer) {
-		this.networkName = networkName;
+	public Network(String networkName) {
+		super();
+		this.networkName=networkName;
 		this.arrayComputer = new Computer[0];
 	}
 
@@ -30,6 +31,12 @@ public abstract class Network {
 
 	public Computer[] getArrayComputer() {
 		return arrayComputer;
+	}
+	
+	
+
+	public void setArrayComputer(Computer[] arrayComputer) {
+		this.arrayComputer = arrayComputer;
 	}
 
 	// Abstract method for adding computers

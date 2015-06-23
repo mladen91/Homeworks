@@ -1,5 +1,7 @@
 package ba.bitcamp.homework17.part02.task03;
 
+import java.util.Arrays;
+
 import ba.bitcamp.homework17.part01.task01.Computer;
 import ba.bitcamp.homework17.part01.task02.Network;
 import ba.bitcamp.homework17.part01.task03.Server;
@@ -12,9 +14,8 @@ public class BusNetwork extends Network implements Functionable {
 	private int counter;
 
 	// Default generated constructor
-	public BusNetwork(String networkName, Computer[] arrayComputer) {
-		super(networkName, arrayComputer);
-
+	public BusNetwork(String networkName) {
+		super(networkName);
 	}
 
 	@Override
@@ -36,9 +37,10 @@ public class BusNetwork extends Network implements Functionable {
 	// This method will add computer to network
 	public void addComputer(Computer c) {
 		// Extending array by one
-		ArrayManipulation.extendArray(getArrayComputer());
+		Computer[] cmp = ArrayManipulation.extendArray(getArrayComputer());
 		// putting new computer value into new extended array
-		getArrayComputer()[getArrayComputer().length - 1] = c;
+		cmp[cmp.length - 1] = c;
+		setArrayComputer(cmp);
 		// if computer is server we can't add it to network
 		if (c instanceof Server) {
 			throw new IllegalArgumentException("You can't add server.");

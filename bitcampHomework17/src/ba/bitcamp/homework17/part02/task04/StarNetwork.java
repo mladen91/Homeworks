@@ -1,5 +1,7 @@
 package ba.bitcamp.homework17.part02.task04;
 
+import java.util.Arrays;
+
 import ba.bitcamp.homework17.part01.task01.Computer;
 import ba.bitcamp.homework17.part01.task02.Network;
 import ba.bitcamp.homework17.part01.task03.Server;
@@ -18,13 +20,11 @@ public class StarNetwork extends Network implements Functionable {
 	 * 
 	 * @param networkName
 	 *            - represents name of the network
-	 * @param arrayComputer
-	 *            - array of computers on network
 	 * @param s
 	 *            - represents server
 	 */
-	public StarNetwork(String networkName, Computer[] arrayComputer, Server s) {
-		super(networkName, arrayComputer);
+	public StarNetwork(String networkName, Server s) {
+		super(networkName);
 		this.s = s;
 	}
 
@@ -32,18 +32,20 @@ public class StarNetwork extends Network implements Functionable {
 	// Network is in function when number of computer on network is lower than
 	// server capacity
 	@Override
-	public boolean isFunctioning() {
-		counter = 0;
+	public boolean isFunctioning() throws IllegalArgumentException {
+		int counter = 0;
+		System.out.println(Arrays.toString(getArrayComputer()));
 		for (int i = 0; i < getArrayComputer().length; i++) {
-			if (getArrayComputer()[i] != null) {
-				counter++;
+			if (getArrayComputer()[i] instanceof Client) {
+				Client c = (Client) getArrayComputer()[i];
+				if (c.getWhichNetworkConnected() != null)
+					counter++;
 			}
 		}
-		if (s.getMaxNumOfComputers() <= counter) {
+		if (counter > s.getMaxNumOfComputers())
 			return false;
-		} else {
+		else
 			return true;
-		}
 	}
 
 	// This method will connect computer to server
@@ -54,8 +56,9 @@ public class StarNetwork extends Network implements Functionable {
 			throw new IllegalArgumentException("You can't add server.");
 		} else {
 			// Extending our array by one
-			ArrayManipulation.extendArray(getArrayComputer());
-			getArrayComputer()[getArrayComputer().length - 1] = c;
+			Computer[] cmp = ArrayManipulation.extendArray(getArrayComputer());
+			cmp[cmp.length - 1] = c;
+			setArrayComputer(cmp);
 			if (c instanceof Client) {
 				Client cl = (Client) c;
 				// Connecting computer to server

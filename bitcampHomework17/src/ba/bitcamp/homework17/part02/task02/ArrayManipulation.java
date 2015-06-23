@@ -1,5 +1,7 @@
 package ba.bitcamp.homework17.part02.task02;
 
+import java.util.Arrays;
+
 import ba.bitcamp.homework17.part01.task01.Computer;
 
 public class ArrayManipulation {
@@ -10,14 +12,13 @@ public class ArrayManipulation {
 	 * @param c
 	 *            -represents array of computers
 	 */
-	public static void extendArray(Computer[] c) {
+	public static Computer[] extendArray(Computer[] c) {
 		Computer[] compArray = new Computer[c.length + 1];
 
 		for (int i = 0; i < c.length; i++) {
 			compArray[i] = c[i];
 		}
-		c = compArray;
-
+		return compArray;
 	}
 
 	/**
@@ -28,7 +29,7 @@ public class ArrayManipulation {
 	 * @param idx
 	 *            - represents index of computer that will be decreased
 	 */
-	public static void shrinkArray(Computer[] c, int idx) {
+	public static Computer[] shrinkArray(Computer[] c, int idx) {
 		Computer[] compArray = new Computer[c.length - 1];
 		int j = 0;
 		for (int i = 0; i < compArray.length; i++) {
@@ -39,6 +40,6 @@ public class ArrayManipulation {
 			compArray[i] = c[j];
 			j++;
 		}
-
+		return compArray;
 	}
 }
