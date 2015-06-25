@@ -3,6 +3,13 @@ package ba.bitcamp.homeworkweekend05.task02;
 import ba.bitcamp.homeworkweekend05.task01.Character;
 import ba.bitcamp.homeworkweekend05.task01.StoryElement;
 
+/**
+ * This class extends StoryElement and contains attributes gameMode, goal and
+ * eventCharacter It also contains getters and setters, and toString method.
+ * 
+ * @author Mladen13
+ *
+ */
 public class Goal extends StoryElement {
 
 	private int gameMode;
@@ -35,38 +42,69 @@ public class Goal extends StoryElement {
 		this.eventCharacter = eventCharacter;
 	}
 
-	// Getters and setters
+	/**
+	 * Getting game mode (easy, hard, or impossible)
+	 * 
+	 * @return - gameMode
+	 */
 	public int getWeight() {
 		return gameMode;
 	}
 
+	/**
+	 * Setting gameMode
+	 * 
+	 * @param weight
+	 *            - represents game mode (easy, hard or impossible)
+	 */
 	public void setWeight(int weight) {
 		this.gameMode = weight;
 	}
 
+	/**
+	 * Getting character main goal
+	 * 
+	 * @return - goal
+	 */
 	public int getGoal() {
 		return goal;
 	}
 
+	/**
+	 * Setting character main goal
+	 * 
+	 * @param goal
+	 */
 	public void setGoal(int goal) {
 		this.goal = goal;
 	}
 
+	/**
+	 * Getting character event
+	 * 
+	 * @return - characterEvent
+	 */
 	public Character getEventCharacter() {
 		return eventCharacter;
 	}
 
+	/**
+	 * Setting character event
+	 * 
+	 * @param eventCharacter
+	 */
 	public void setEventCharacter(Character eventCharacter) {
 		this.eventCharacter = eventCharacter;
 	}
 
-	// Basic toString method
+	/**
+	 * Printing game mode, main event, and character that takes part in event
+	 */
 	public String toString() {
-		String s = "";
-		s = "Game mode: " + gameMode;
-		s = s + "\nEvent for meeting the goal:" + goal;
-		s = s + "\nCharacter that takes part in event: " + eventCharacter;
-		return s;
+
+		return "Game mode: " + gameMode + "\nEvent for meeting the goal:"
+				+ goal + "\nCharacter that takes part in event: "
+				+ eventCharacter;
 	}
 
 }
