@@ -111,6 +111,7 @@ public class Protagonist extends Character {
 				break;
 			} else if (mainCharacterHelpers[mainCharacterHelpers.length - 1] != null) {
 				System.out.println("Can't add more allies.");
+				break;
 			}
 		}
 	}

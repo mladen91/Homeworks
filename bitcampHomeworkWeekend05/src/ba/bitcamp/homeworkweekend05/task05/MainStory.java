@@ -57,6 +57,7 @@ public class MainStory {
 		p1.addOneAlly(a1);
 		p1.addOneAlly(a2);
 		p1.addOneAlly(a3);
+		p1.addOneAlly(a3);
 		p1.setMainEnemy(c5);
 		p1.attainGoal();
 		// Minotaur was too strong and he defeated all of our heroes. Princess
