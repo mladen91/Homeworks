@@ -164,7 +164,7 @@ public class Task2 extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		// Calling constructo
+		// Calling constructor
 		new Task2();
 
 	}
