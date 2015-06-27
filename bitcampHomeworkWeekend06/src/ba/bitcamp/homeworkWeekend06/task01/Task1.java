@@ -62,6 +62,7 @@ public class Task1 extends JFrame {
 	 */
 	public class BH implements ActionListener {
 
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
@@ -75,6 +76,7 @@ public class Task1 extends JFrame {
 			// Showing message dialog box when counter reaches 3
 			if (counter == 3) {
 				JOptionPane.showMessageDialog(null, "Number: " + s);
+				System.exit(EXIT_ON_CLOSE);
 			}
 
 		}
