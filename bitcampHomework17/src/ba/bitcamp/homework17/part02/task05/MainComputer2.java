@@ -1,8 +1,8 @@
 package ba.bitcamp.homework17.part02.task05;
 
-
 import ba.bitcamp.homework17.part01.task03.Server;
 import ba.bitcamp.homework17.part01.task04.Client;
+import ba.bitcamp.homework17.part02.task03.BusNetwork;
 import ba.bitcamp.homework17.part02.task04.StarNetwork;
 
 public class MainComputer2 {
@@ -29,9 +29,13 @@ public class MainComputer2 {
 
 		sn1.addComputer(c1);
 		sn1.addComputer(c2);
-		sn1.addComputer(c3);
-		sn1.addComputer(c4);
+
 		System.out.println(sn1);
+
+		BusNetwork bn1 = new BusNetwork("Bus Network");
+		bn1.addComputer(c3);
+		bn1.addComputer(c4);
+		System.out.println(bn1);
 
 	}
 

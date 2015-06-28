@@ -3,10 +3,18 @@ package ba.bitcamp.homework17.part01.task04;
 import ba.bitcamp.homework17.part01.task01.Computer;
 import ba.bitcamp.homework17.part01.task02.Network;
 
+/**
+ * This class extends Computer class and implements Connectable interface It
+ * contains two attributes and connect and disconnect method that are
+ * implemented by interface.
+ * 
+ * @author Mladen13
+ *
+ */
 public class Client extends Computer implements Connectable {
 
-	private Computer connectedWith;
-	private Network whichNetworkConnected;
+	private Computer connectedComputer;
+	private Network connectedNetwork;
 
 	/**
 	 * <h1>Creating constructor that initializes computer name and mac address.</h1>
@@ -20,47 +28,64 @@ public class Client extends Computer implements Connectable {
 		super(name, macAddress);
 	}
 
-	// Getters
-	public Computer getConnectedWith() {
+	/**
+	 * This method will get connected computer
+	 * 
+	 * @return - return connected computer
+	 */
+	public Computer getConnectedComputer() {
 
-		return connectedWith;
+		return connectedComputer;
 	}
 
-	public Network getWhichNetworkConnected() {
-		return whichNetworkConnected;
+	/**
+	 * This method will get connected network
+	 * 
+	 * @return - return connected network
+	 */
+	public Network getConnectedNetwork() {
+		return connectedNetwork;
 	}
 
-	// Method that connects two computers
+	/**
+	 * This method will connect two computers.
+	 */
 	@Override
 	public void connect(Computer c) {
-		if (connectedWith != null || whichNetworkConnected != null) {
-			throw new IllegalArgumentException("Error");
+		if (connectedComputer != null || connectedNetwork != null) {
+			throw new IllegalArgumentException(
+					"Error while connecting to computer. Link to computer already exists.");
 		} else
-			connectedWith = c;
+			connectedComputer = c;
 
 	}
 
-	// Method that gives link to network
+	/**
+	 * This method will give link to network.
+	 */
 	@Override
 	public void connect(Network n) {
-		if (connectedWith != null || whichNetworkConnected != null) {
-			throw new IllegalArgumentException("Error");
+		if (connectedComputer != null || connectedNetwork != null) {
+			throw new IllegalArgumentException(
+					"Error while connecting to network. Link to network already exists.");
 		} else
-			whichNetworkConnected = n;
+			connectedNetwork = n;
 
 	}
 
-	// Disconnects computer from network
+	/**
+	 * This method disconnects computer from network.
+	 */
 	@Override
 	public void disconnect() {
-		whichNetworkConnected = null;
-		connectedWith = null;
+		connectedNetwork = null;
+		connectedComputer = null;
 	}
 
 	@Override
 	public String toString() {
-		return "Client is connected with: " + connectedWith + ", on network: "
-				+ whichNetworkConnected;
+		return "Client is connected with: " + connectedComputer
+				+ ", on network: " + connectedNetwork;
 	}
 
 	@Override
@@ -72,15 +97,15 @@ public class Client extends Computer implements Connectable {
 		if (getClass() != obj.getClass())
 			return false;
 		Client other = (Client) obj;
-		if (connectedWith == null) {
-			if (other.connectedWith != null)
+		if (connectedComputer == null) {
+			if (other.connectedComputer != null)
 				return false;
-		} else if (!connectedWith.equals(other.connectedWith))
+		} else if (!connectedComputer.equals(other.connectedComputer))
 			return false;
-		if (whichNetworkConnected == null) {
-			if (other.whichNetworkConnected != null)
+		if (connectedNetwork == null) {
+			if (other.connectedNetwork != null)
 				return false;
-		} else if (!whichNetworkConnected.equals(other.whichNetworkConnected))
+		} else if (!connectedNetwork.equals(other.connectedNetwork))
 			return false;
 		return true;
 	}

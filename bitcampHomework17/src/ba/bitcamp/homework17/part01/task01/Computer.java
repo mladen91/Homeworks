@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @author Mladen13
  *
  */
-public class Computer {
+public abstract class Computer {
 	private String name;
 	private MACAddress macAddress;
 
@@ -26,28 +26,32 @@ public class Computer {
 		this.macAddress = new MACAddress(macAddress);
 	}
 
-	// Empty constructor that defines default name, and mac address
+	/**
+	 * This constructor sets default computer name, and sets mac address to
+	 * null.
+	 */
 	public Computer() {
 
 		this.name = "Default Computer";
-		this.macAddress = null;
+		
 	}
 
-	// Getters and setters
+	/**
+	 * This method will get name of computer
+	 * 
+	 * @return - computer name
+	 */
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	/**
+	 * This method will get computer MAC address
+	 * 
+	 * @return - macAddress
+	 */
 	public String getMacAddress() {
 		return macAddress.toString();
-	}
-
-	public void setMacAddress(MACAddress macAddress) {
-		this.macAddress = macAddress;
 	}
 
 	/**
@@ -79,6 +83,26 @@ public class Computer {
 			return s;
 
 		}
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			MACAddress other = (MACAddress) obj;
+			if (!getOuterType().equals(other.getOuterType()))
+				return false;
+			if (!Arrays.equals(mac, other.mac))
+				return false;
+			return true;
+		}
+		private Computer getOuterType() {
+			return Computer.this;
+		}
+		
+		
 
 	}
 }

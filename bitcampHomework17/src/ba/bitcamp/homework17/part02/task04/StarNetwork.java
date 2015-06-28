@@ -9,6 +9,13 @@ import ba.bitcamp.homework17.part01.task04.Client;
 import ba.bitcamp.homework17.part02.task01.Functionable;
 import ba.bitcamp.homework17.part02.task02.ArrayManipulation;
 
+/**
+ * StarNetwork extends Network class, and implements Functionable interface
+ * which has one method that checks if our network is in function
+ * 
+ * @author Mladen13
+ *
+ */
 public class StarNetwork extends Network implements Functionable {
 
 	private int counter = 0;
@@ -28,9 +35,10 @@ public class StarNetwork extends Network implements Functionable {
 		this.s = s;
 	}
 
-	// This method checks if our network is in function
-	// Network is in function when number of computer on network is lower than
-	// server capacity
+	/**
+	 * This method checks if our network is in function. Network is in function
+	 * when number of computer on network is lower than server capacity
+	 */
 	@Override
 	public boolean isFunctioning() throws IllegalArgumentException {
 		int counter = 0;
@@ -38,17 +46,19 @@ public class StarNetwork extends Network implements Functionable {
 		for (int i = 0; i < getArrayComputer().length; i++) {
 			if (getArrayComputer()[i] instanceof Client) {
 				Client c = (Client) getArrayComputer()[i];
-				if (c.getWhichNetworkConnected() != null)
+				if (c.getConnectedNetwork() != null)
 					counter++;
 			}
 		}
 		if (counter > s.getMaxNumOfComputers())
 			return false;
 		else
-			return true;
+			return counter <= s.getMaxNumOfComputers();
 	}
 
-	// This method will connect computer to server
+	/**
+	 * This method will connect one computer to server
+	 */
 	@Override
 	public void addComputer(Computer c) {
 
@@ -67,7 +77,9 @@ public class StarNetwork extends Network implements Functionable {
 		}
 	}
 
-	// This method will remove one computer from network
+	/**
+	 * This method will remove one computer from network
+	 */
 	@Override
 	public void removeComputer(Computer c) {
 		if (c instanceof Client) {
@@ -77,6 +89,8 @@ public class StarNetwork extends Network implements Functionable {
 				if (getArrayComputer()[i].getName().equals(cl.getName())) {
 					cl.disconnect();
 					ArrayManipulation.shrinkArray(getArrayComputer(), i);
+					setArrayComputer(ArrayManipulation.shrinkArray(
+							getArrayComputer(), i));
 					return;
 				}
 			}
@@ -87,14 +101,14 @@ public class StarNetwork extends Network implements Functionable {
 
 	}
 
-	// Method that prints number of computers, and checks if network is
-	// functioning
+	/**
+	 * Method that prints number of computers, and checks if network is
+	 * functioning
+	 */
 	public String toString() {
-		String s = "";
 
-		s = "Number of computers on server: " + counter;
-		s = s + "\nNetwork in function: " + isFunctioning();
-		return s;
+		return "Number of computers on server: " + getArrayComputer().length
+				+ "\nNetwork in function: " + isFunctioning();
 	}
 
 }

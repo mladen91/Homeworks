@@ -1,7 +1,5 @@
 package ba.bitcamp.homework17.part02.task03;
 
-import java.util.Arrays;
-
 import ba.bitcamp.homework17.part01.task01.Computer;
 import ba.bitcamp.homework17.part01.task02.Network;
 import ba.bitcamp.homework17.part01.task03.Server;
@@ -9,32 +7,49 @@ import ba.bitcamp.homework17.part01.task04.Client;
 import ba.bitcamp.homework17.part02.task01.Functionable;
 import ba.bitcamp.homework17.part02.task02.ArrayManipulation;
 
+/**
+ * This class extends Network class, and it contains method from interface
+ * functionable.
+ * 
+ * @author Mladen13
+ *
+ */
 public class BusNetwork extends Network implements Functionable {
 
 	private int counter;
 
-	// Default generated constructor
+	/**
+	 * Constructor that initializes network name, which is inherited from class
+	 * Network
+	 * 
+	 * @param networkName
+	 *            - represents name of network
+	 */
 	public BusNetwork(String networkName) {
 		super(networkName);
 	}
 
 	@Override
-	// This method will check if our network is functioning
+	/**
+	 * This method will check if our network is in function
+	 */
 	public boolean isFunctioning() {
 		counter = 0;
 		for (int i = 0; i < getArrayComputer().length; i++) {
-			if (getArrayComputer() != null) {
+			if (getArrayComputer()[i] != null) {
 				counter++;
 			}
 		}
-		if (counter >= 2) {
+		if (counter > 1) {
 			return true;
 		} else
 			return false;
 	}
 
 	@Override
-	// This method will add computer to network
+	/**
+	 * This method will add computer to network, which is implemented from interface Connectable
+	 */
 	public void addComputer(Computer c) {
 		// Extending array by one
 		Computer[] cmp = ArrayManipulation.extendArray(getArrayComputer());
@@ -49,11 +64,12 @@ public class BusNetwork extends Network implements Functionable {
 			Client comp = (Client) c;
 			comp.connect(this);
 		}
-
 	}
 
 	@Override
-	// This method will remove computer from network
+	/**
+	 * This method will remove computer from network, which is implemented from interface Connectable
+	 */
 	public void removeComputer(Computer c) {
 		// If computer is server, we can't remove it.
 		if (c instanceof Server) {
@@ -63,11 +79,14 @@ public class BusNetwork extends Network implements Functionable {
 			// Before removing computer, we need to disconnect it from network
 			// first.
 			comp.disconnect();
+
 			for (int i = 0; i < getArrayComputer().length; i++) {
 				// if we find wanted computer name in array, we will remove that
 				// computer
 				if (c.getName().equals(getArrayComputer()[i].getName())) {
 					ArrayManipulation.shrinkArray(getArrayComputer(), i);
+					setArrayComputer(ArrayManipulation.shrinkArray(
+							getArrayComputer(), i));
 					return;
 				}
 			}
@@ -76,13 +95,13 @@ public class BusNetwork extends Network implements Functionable {
 
 	}
 
-	// Method that prints number of computers, and checks if network is
-	// functioning
+	/**
+	 * Method that prints number of computers, and checks if network is
+	 * functioning
+	 */
 	public String toString() {
-		String s = "";
 
-		s = "Number of computers on network: " + counter;
-		s = s + "\nNetwork in function: " + isFunctioning();
-		return s;
+		return "Number of computers on network: " + getArrayComputer().length
+				+ "\nNetwork in function: " + isFunctioning();
 	}
 }

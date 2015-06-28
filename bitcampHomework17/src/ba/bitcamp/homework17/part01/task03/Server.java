@@ -2,17 +2,25 @@ package ba.bitcamp.homework17.part01.task03;
 
 import ba.bitcamp.homework17.part01.task01.Computer;
 
+/**
+ * This class extends Computer class and contains one attribute. It will set
+ * maximum number of computers in network.
+ * 
+ * @author Mladen13
+ *
+ */
 public class Server extends Computer {
 
 	private int maxNumOfComputers;
 
-	// Getter and setter
+	/**
+	 * This method will get maximum number of computers that can be connected to
+	 * one server
+	 * 
+	 * @return - maxNumOfComputers
+	 */
 	public int getMaxNumOfComputers() {
 		return maxNumOfComputers;
-	}
-
-	public void setMaxNumOfComputers(int maxNumOfComputers) {
-		this.maxNumOfComputers = maxNumOfComputers;
 	}
 
 	/**
@@ -40,16 +48,8 @@ public class Server extends Computer {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Server other = (Server) obj;
-		if (maxNumOfComputers != other.maxNumOfComputers)
-			return false;
-		return true;
+		return obj != null && super.equals(obj)
+				&& maxNumOfComputers == ((Server) obj).maxNumOfComputers;
 	}
 
 }

@@ -1,9 +1,14 @@
 package ba.bitcamp.homework17.part02.task02;
 
-import java.util.Arrays;
-
 import ba.bitcamp.homework17.part01.task01.Computer;
 
+/**
+ * This class contains two methods that will extend array by one element, and
+ * other class that will shrink array by one.
+ * 
+ * @author Mladen13
+ *
+ */
 public class ArrayManipulation {
 
 	/**
@@ -13,6 +18,7 @@ public class ArrayManipulation {
 	 *            -represents array of computers
 	 */
 	public static Computer[] extendArray(Computer[] c) {
+
 		Computer[] compArray = new Computer[c.length + 1];
 
 		for (int i = 0; i < c.length; i++) {
@@ -30,16 +36,23 @@ public class ArrayManipulation {
 	 *            - represents index of computer that will be decreased
 	 */
 	public static Computer[] shrinkArray(Computer[] c, int idx) {
-		Computer[] compArray = new Computer[c.length - 1];
-		int j = 0;
-		for (int i = 0; i < compArray.length; i++) {
 
-			if (j == idx) {
-				j++;
+		if (c == null) {
+			throw new NullPointerException(
+					"There is no computers in your array");
+		} else {
+
+			Computer[] compArray = new Computer[c.length - 1];
+
+			for (int i = 0; i < compArray.length; i++) {
+
+				if (i < idx) {
+					compArray[i] = c[i];
+				} else {
+					compArray[i] = c[i + 1];
+				}
 			}
-			compArray[i] = c[j];
-			j++;
+			return compArray;
 		}
-		return compArray;
 	}
 }

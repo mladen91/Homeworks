@@ -3,6 +3,12 @@ package ba.bitcamp.homework17.part01.task04;
 import ba.bitcamp.homework17.part01.task01.Computer;
 import ba.bitcamp.homework17.part01.task02.Network;
 
+/**
+ * Interface that contains two connect methods, and one disconnect method.
+ * 
+ * @author Mladen13
+ *
+ */
 public interface Connectable {
 
 	/**
@@ -23,6 +29,8 @@ public interface Connectable {
 	 */
 	void connect(Network n);
 
-	// Disconnects computer from network.
+	/**
+	 * This method disconnects computer from network
+	 */
 	void disconnect();
 }
