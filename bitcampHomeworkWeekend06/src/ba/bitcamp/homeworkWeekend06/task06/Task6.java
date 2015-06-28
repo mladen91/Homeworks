@@ -57,6 +57,7 @@ public class Task6 {
 			for (int j = 0; j < matrix[i].length; j++) {
 				System.out.printf("%3d", matrix[i][j]);
 			}
+			//Moving to next row
 			System.out.println();
 		}
 	}
