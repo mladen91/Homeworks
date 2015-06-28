@@ -63,9 +63,9 @@ public class Task2 extends JFrame {
 		b2.addActionListener(new BH());
 		// Setting visibility to true
 		setVisible(true);
-		// Setting size for frame 300 x 300
+		// Setting size for frame 450 x 180
 		setSize(450, 180);
-		// Setting location for frame 500 x 350
+		// Setting location for frame 400 x 350
 		setLocation(400, 350);
 		// Closing application
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
