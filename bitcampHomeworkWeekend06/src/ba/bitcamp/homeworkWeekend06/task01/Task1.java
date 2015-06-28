@@ -21,9 +21,9 @@ public class Task1 extends JFrame {
 	private static final long serialVersionUID = -3196311442843583418L;
 	public static final int ROWS = 10;
 	public static final int COLUMNS = 1;
-	int counter = 0;
-	JButton[] b1 = new JButton[ROWS];
-	String s = "";
+	private int counter = 0;
+	private JButton[] b1 = new JButton[ROWS];
+	private String s = "";
 
 	public Task1() {
 		// Setting new grid layout 10 x 1
