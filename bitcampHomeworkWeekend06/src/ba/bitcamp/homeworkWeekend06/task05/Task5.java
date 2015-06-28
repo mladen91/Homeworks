@@ -12,11 +12,9 @@ public class Task5 {
 
 	/**
 	 * Recursive method that calculates square of one number
-	 * 
-	 * @param i
-	 *            - represents base
-	 * @param j
-	 *            - represents exponent
+	 * <p>
+	 * @param i - represents base
+	 * @param j - represents exponent
 	 * @return - result
 	 */
 	private static double getPower(double i, double j) {
