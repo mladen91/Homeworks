@@ -108,9 +108,7 @@ public class Task4 extends JFrame {
 					l1.setText(getText(--counter));
 				}
 			}
-
 		}
-
 	}
 
 	/**
@@ -131,12 +129,12 @@ public class Task4 extends JFrame {
 	}
 
 	/**
-	 * This method will make character array using String s, and insert char _
+	 * This method will make character array using String s, and insert char '_'
 	 * into it.
 	 * 
 	 * @param index
-	 *            - represents spot where _ will be seated
-	 * @return - new String s with _
+	 *            - represents spot where '_' will be seated
+	 * @return - new String s with '_'
 	 */
 	public String getText(int index) {
 		char[] c = new char[s.length()];
