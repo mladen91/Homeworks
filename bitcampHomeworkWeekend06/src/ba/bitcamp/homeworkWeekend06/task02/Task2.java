@@ -20,15 +20,15 @@ public class Task2 extends JFrame {
 
 	private static final long serialVersionUID = 1039602972199556972L;
 	// Creating button with First Name text on it
-	JButton b1 = new JButton("First Name");
+	private JButton b1 = new JButton("First Name");
 	// Creating button with Last Name on it
-	JButton b2 = new JButton("Last Name");
+	private JButton b2 = new JButton("Last Name");
 	// Creating labels for first name, last name
-	JLabel l1;
-	JLabel l2;
+	private JLabel l1;
+	private JLabel l2;
 	// Creating empty label because without it i couldn't move l2 through
 	// window(frame)
-	JLabel l3 = new JLabel();
+	private JLabel l3 = new JLabel();
 	// Creating object ng from inner class NameGenerator
 	NameGenerator ng = new NameGenerator();
 	// Creating object lng from inner class LastNameGenerator
