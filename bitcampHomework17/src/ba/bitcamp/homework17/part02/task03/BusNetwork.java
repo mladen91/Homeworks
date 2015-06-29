@@ -83,7 +83,7 @@ public class BusNetwork extends Network implements Functionable {
 			for (int i = 0; i < getArrayComputer().length; i++) {
 				// if we find wanted computer name in array, we will remove that
 				// computer
-				if (c.getName().equals(getArrayComputer()[i].getName())) {
+				if (c.equals(getArrayComputer()[i])) {
 					ArrayManipulation.shrinkArray(getArrayComputer(), i);
 					setArrayComputer(ArrayManipulation.shrinkArray(
 							getArrayComputer(), i));

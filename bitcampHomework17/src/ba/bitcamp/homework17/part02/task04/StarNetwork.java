@@ -86,12 +86,16 @@ public class StarNetwork extends Network implements Functionable {
 			Client cl = (Client) c;
 			for (int i = 0; i < getArrayComputer().length; i++) {
 				// Checking if there is wanted computer in our computer array
-				if (getArrayComputer()[i].getName().equals(cl.getName())) {
-					cl.disconnect();
+				if (c.equals(getArrayComputer()[i])) {
 					ArrayManipulation.shrinkArray(getArrayComputer(), i);
 					setArrayComputer(ArrayManipulation.shrinkArray(
 							getArrayComputer(), i));
+					if(c instanceof Client){
+						cl.disconnect();	
+					} else 
+						throw new IllegalArgumentException();
 					return;
+					
 				}
 			}
 		} else {
