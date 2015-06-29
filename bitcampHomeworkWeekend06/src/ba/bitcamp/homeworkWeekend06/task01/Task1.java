@@ -1,4 +1,4 @@
-package ba.bitcamp.homeworkWeekend06.task01;
+package ba.bitcamp.homeworkweekend06.task01;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -25,6 +25,9 @@ public class Task1 extends JFrame {
 	private JButton[] b1 = new JButton[ROWS];
 	private String s = "";
 
+	/**
+	 * Creating constructor that creates buttons and sets grid layout
+	 */
 	public Task1() {
 		// Setting new grid layout 10 x 1
 		setLayout(new GridLayout(ROWS, COLUMNS));
@@ -62,7 +65,6 @@ public class Task1 extends JFrame {
 	 */
 	public class BH implements ActionListener {
 
-		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 

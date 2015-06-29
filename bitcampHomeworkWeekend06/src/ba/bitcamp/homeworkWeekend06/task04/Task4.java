@@ -1,4 +1,4 @@
-package ba.bitcamp.homeworkWeekend06.task04;
+package ba.bitcamp.homeworkweekend06.task04;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;

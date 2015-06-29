@@ -1,4 +1,4 @@
-package ba.bitcamp.homeworkWeekend06.task06;
+package ba.bitcamp.homeworkweekend06.task06;
 
 public class Task6 {
 
@@ -57,7 +57,7 @@ public class Task6 {
 			for (int j = 0; j < matrix[i].length; j++) {
 				System.out.printf("%3d", matrix[i][j]);
 			}
-			//Moving to next row
+			// Moving to next row
 			System.out.println();
 		}
 	}

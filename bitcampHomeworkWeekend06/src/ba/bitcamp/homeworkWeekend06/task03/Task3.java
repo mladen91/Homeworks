@@ -1,4 +1,4 @@
-package ba.bitcamp.homeworkWeekend06.task03;
+package ba.bitcamp.homeworkweekend06.task03;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
