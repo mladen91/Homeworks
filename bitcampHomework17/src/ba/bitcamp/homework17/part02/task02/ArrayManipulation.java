@@ -38,7 +38,7 @@ public class ArrayManipulation {
 	public static Computer[] shrinkArray(Computer[] c, int idx) {
 
 		if (c == null) {
-			throw new NullPointerException(
+			throw new UnsupportedOperationException(
 					"There is no computers in your array");
 		} else {
 
