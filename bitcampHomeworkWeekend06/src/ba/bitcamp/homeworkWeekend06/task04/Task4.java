@@ -30,16 +30,16 @@ public class Task4 extends JFrame {
 	public Task4() {
 		// Adding button on top of the frame
 		add(bN, BorderLayout.NORTH);
-		bN.addActionListener(new BH());
+		bN.addActionListener(new ButtonHandler());
 		// Adding button on the bottom of the frame
 		add(bS, BorderLayout.SOUTH);
-		bS.addActionListener(new BH());
+		bS.addActionListener(new ButtonHandler());
 		// Adding button to the right side
 		add(bE, BorderLayout.EAST);
-		bE.addActionListener(new BH());
+		bE.addActionListener(new ButtonHandler());
 		// Adding button to the left side
 		add(bW, BorderLayout.WEST);
-		bW.addActionListener(new BH());
+		bW.addActionListener(new ButtonHandler());
 		// Adding labels
 		add(l1);
 		// Adding second empty label just enable moving of first one
@@ -68,7 +68,7 @@ public class Task4 extends JFrame {
 	 * @author Mladen13
 	 *
 	 */
-	public class BH implements ActionListener {
+	public class ButtonHandler implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

@@ -27,7 +27,6 @@ public class Task3 extends JFrame {
 	// Creating array of buttons
 	private JButton[] b1 = new JButton[ROWS * COLUMNS];
 	private int counter = 0;
-	private String s = "";
 	// String that will be our displaying array
 	private String[] arr = new String[5];
 
@@ -36,9 +35,9 @@ public class Task3 extends JFrame {
 		setLayout(new GridLayout(ROWS, COLUMNS));
 		// Creating button through loop
 		for (int i = 0; i < b1.length; i++) {
-			b1[i] = new JButton("" + i);
+			b1[i] = new JButton(String.valueOf(i));
 			add(b1[i]);
-			b1[i].addActionListener(new BH());
+			b1[i].addActionListener(new ButtonHandler());
 		}
 		// Setting visibility to true
 		setVisible(true);
@@ -64,7 +63,7 @@ public class Task3 extends JFrame {
 	 * @author Mladen13
 	 *
 	 */
-	public class BH implements ActionListener {
+	public class ButtonHandler implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -78,8 +77,7 @@ public class Task3 extends JFrame {
 
 			((JButton) e.getSource()).setEnabled(false);
 
-			s = ((JButton) e.getSource()).getText();
-			arr[counter] = s;
+			arr[counter] = ((JButton) e.getSource()).getText();
 			counter++;
 			// When counter reaches five, application will display string
 			if (counter == 5) {

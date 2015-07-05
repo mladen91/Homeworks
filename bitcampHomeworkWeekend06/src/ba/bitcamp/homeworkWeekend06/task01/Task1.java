@@ -33,9 +33,13 @@ public class Task1 extends JFrame {
 		setLayout(new GridLayout(ROWS, COLUMNS));
 		// For loop that generates 10 buttons from 0 to 9
 		for (int i = 0; i < ROWS; i++) {
-			b1[i] = new JButton("" + i);
+			b1[i] = new JButton(String.valueOf(i));
 			add(b1[i]);
 			b1[i].addActionListener(new BH());
+		}
+		// Disabling button so we can't add 0 on the first place
+		if (s.length() == 0) {
+			b1[0].setEnabled(false);
 		}
 		// Setting visibility to true
 		setVisible(true);
@@ -71,12 +75,18 @@ public class Task1 extends JFrame {
 			// Setting clicked button enabled to false
 			((JButton) e.getSource()).setEnabled(false);
 			// Increasing counter by one, after every click
-			counter++;
+			// Enabling our number 0 button for inserting, after first number is
+			// inserted
+			if (s.length() == 0) {
+
+				b1[0].setEnabled(true);
+
+			}
 			// Putting numbers into string
 			s += ((JButton) e.getSource()).getText();
 
 			// Showing message dialog box when counter reaches 3
-			if (counter == 3) {
+			if (s.length() == 3) {
 				JOptionPane.showMessageDialog(null, "Number: " + s);
 				System.exit(EXIT_ON_CLOSE);
 			}

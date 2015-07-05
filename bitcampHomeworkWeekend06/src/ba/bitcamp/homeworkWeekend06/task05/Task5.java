@@ -20,11 +20,20 @@ public class Task5 {
 	private static double getPower(double i, double j) {
 
 		// If exponent reaches zero return 1
+		if (i == 0 && j == 0) {
+			throw new ArithmeticException("Both base and exp cannot be 0.");
+		}
+		if (i == 0) {
+			return 0;
+		}
 		if (j == 0) {
 			return 1;
-		} else {
-			// Decreasing exponent by one, and multiplying by base
-			return i * Math.pow(i, j - 1);
+		}
+		
+		if (j < 0) {
+			return (1 / i) * getPower(1 / i, -j - 1);
+		} else {		
+			return i * getPower(i, j - 1);
 		}
 	}
 
