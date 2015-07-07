@@ -1,6 +1,5 @@
 package ba.bitcamp.homework18.task03;
 
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +28,8 @@ public class Task3 extends JFrame {
 	private JLabel l1 = new JLabel("Username:");
 	private JLabel l2 = new JLabel("Password:");
 
-	private Font f1;
+	private static final String correctUsername = "Mujo";
+	private static final String correctPassword = "1234";
 
 	public Task3() {
 		// Setting grid layout 2 x 2 to frame
@@ -40,8 +40,8 @@ public class Task3 extends JFrame {
 		add(l2);
 		add(pass);
 		// Adding action listeners
-		text.addActionListener(new AL());
-		pass.addActionListener(new AL());
+		text.addActionListener(new passwordHandler());
+		pass.addActionListener(new passwordHandler());
 		setSize(300, 100);
 
 		setLocationRelativeTo(null);
@@ -60,23 +60,21 @@ public class Task3 extends JFrame {
 	 * @author Mladen13
 	 *
 	 */
-	public class AL implements ActionListener {
+	public class passwordHandler implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String correctUsername = "Mujo";
+
 			String givenUsername = text.getText();
-			String correctPassword = "1234";
+
 			String givenPassword = String.valueOf(pass.getPassword());
 
-			if (e.getSource() == pass || e.getSource() == text) {
-				if (correctPassword.equals(givenPassword)
-						&& correctUsername.equals(givenUsername)) {
-					System.exit(0);
-				} else {
-					JOptionPane.showMessageDialog(null,
-							"Incorrect username or password!");
-				}
+			if (correctPassword.equals(givenPassword)
+					&& correctUsername.equals(givenUsername)) {
+				System.exit(0);
+			} else {
+				JOptionPane.showMessageDialog(null,
+						"Incorrect username or password!");
 			}
 
 		}

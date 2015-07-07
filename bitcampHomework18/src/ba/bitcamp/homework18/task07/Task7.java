@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -30,11 +31,17 @@ public class Task7 extends JFrame {
 	// Creating slider
 	private JSlider circleSize = new JSlider(0, 5000, 0);
 
+	private JLabel label = new JLabel("Click to center your circle");
+
 	public Task7() {
 		// Setting frame layout
 		setLayout(new BorderLayout());
+		add(label, BorderLayout.NORTH);
+		label.setHorizontalAlignment(label.CENTER);
 		// Adding slider to panel
 		panel.add(circleSize);
+
+		circleSize.setEnabled(false);
 		// Adding change listener to slider
 		circleSize.addChangeListener(new ChangeListener() {
 
@@ -88,6 +95,7 @@ public class Task7 extends JFrame {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			circleSize.setEnabled(true);
 			x = e.getX();
 			y = e.getY();
 		}

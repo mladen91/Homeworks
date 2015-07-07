@@ -35,8 +35,8 @@ public class Task4 {
 						a = Integer.parseInt(JOptionPane
 								.showInputDialog("Enter a number:"));
 						sum += a;
-						choice = JOptionPane.showConfirmDialog(null, "Sum = "
-								+ sum);
+						choice = JOptionPane.showConfirmDialog(null,
+								"Do you want to enter another number?");
 					} else if (choice == JOptionPane.NO_OPTION) {
 						isTrue = false;
 						JOptionPane.showMessageDialog(null, "Sum = " + sum);

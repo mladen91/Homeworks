@@ -52,11 +52,10 @@ public class Task8 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() == clearButton) {
-					userName.setText("");
-					userPass1.setText("");
-					userPass2.setText("");
-				}
+
+				userName.setText("");
+				userPass1.setText("");
+				userPass2.setText("");
 
 			}
 		});
@@ -67,38 +66,48 @@ public class Task8 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String correctUserName = "Mujo123";
-				String correctPassword = "1234567";
-				String givenUserName = userName.getText();
-				String givenPassword = String.valueOf(userPass1.getPassword());
-				String givenConfirmPassword = String.valueOf(userPass2
-						.getPassword());
 
-				if (e.getSource() == submitButton) {
-					if (correctUserName.equals(givenUserName)
-							&& correctPassword.equals(givenPassword)
-							&& correctPassword.equals(givenConfirmPassword)) {
+				if (userName.getText().length() < 6) {
+					JOptionPane.showMessageDialog(null,
+							"Username must have at least 6 characters");
+				} else if (!String.valueOf(userPass1.getPassword()).equals(
+						String.valueOf(userPass2.getPassword()))) {
+					JOptionPane.showMessageDialog(null,
+							"Passwords do not match");
+				} else if (userPass1.getPassword().length < 6) {
+					JOptionPane.showMessageDialog(null,
+							"Password must have at least 6 characters");
+				} else if (!hasDigitAndCharacter(userPass1.getPassword())) {
+					JOptionPane
+							.showMessageDialog(null,
+									"Password must contain at least one digit and one special character\n(@ # ^ %)");
 
-						JOptionPane.showMessageDialog(null,
-								"Registration was successful");
-					} else if (givenUserName.length() < 6) {
-						JOptionPane.showMessageDialog(null,
-								"Username must contain at least 6 characters.");
-					} else if (givenPassword.length() < 6) {
-						JOptionPane.showMessageDialog(null,
-								"Password must contain at least 6 characters.");
-					} else if (!correctPassword.equals(givenPassword)
-							|| !correctPassword.equals(givenConfirmPassword)) {
-						JOptionPane.showMessageDialog(null,
-								"Inserted passwords are different.");
-					}
-
+				} else {
+					setVisible(false);
+					JOptionPane.showMessageDialog(null,
+							"Form is succesfully filled");
+					System.exit(0);
+					;
 				}
 
 			}
+
+			private boolean hasDigitAndCharacter(char[] password) {
+				for (int i = 0; i < password.length; i++) {
+					if (password[i] >= 48 && password[i] <= 57) {
+						for (int j = 0; j < password.length; j++) {
+							if ((password[j] >= 33 && password[j] <= 46)
+									|| (password[j] >= 58 && password[j] <= 64)) {
+								return true;
+							}
+						}
+					}
+				}
+				return false;
+			}
 		});
 
-		setSize(500, 500);
+		setSize(350, 150);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

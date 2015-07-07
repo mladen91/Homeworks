@@ -24,6 +24,10 @@ public class Task5 extends JPanel {
 	private int green;
 	private int blue;
 
+	private JLabel redLabel = new JLabel("Red");
+	private JLabel greenLabel = new JLabel("Green");
+	private JLabel blueLabel = new JLabel("Blue");
+
 	public Task5(int width, int height) {
 		// setting layout to panel
 		setLayout(new GridLayout(3, 2));
@@ -41,9 +45,6 @@ public class Task5 extends JPanel {
 		JSlider blueSlider = new JSlider(0, 255);
 		initSlider(blueSlider, "Blue", sliderDimension);
 		// Creating labels
-		JLabel redLabel = new JLabel("Red");
-		JLabel greenLabel = new JLabel("Green");
-		JLabel blueLabel = new JLabel("Blue");
 
 		// Adding labels
 		add(redLabel);
@@ -104,7 +105,9 @@ public class Task5 extends JPanel {
 	 */
 	private void updateBackground() {
 		setBackground(new Color(red, green, blue));
-		setForeground(new Color(255 - red, 255 - green, 255 - blue));
+		redLabel.setForeground(new Color(255 - red, 255 - green, 255 - blue));
+		greenLabel.setForeground(new Color(255 - red, 255 - green, 255 - blue));
+		blueLabel.setForeground(new Color(255 - red, 255 - green, 255 - blue));
 
 	}
 

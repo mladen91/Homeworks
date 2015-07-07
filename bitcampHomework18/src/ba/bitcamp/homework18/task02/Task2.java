@@ -1,6 +1,5 @@
 package ba.bitcamp.homework18.task02;
 
-import java.awt.Button;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -46,7 +45,7 @@ public class Task2 extends JFrame {
 		p.add(cb2);
 		// Adding button on panel
 		p.add(b1);
-		b1.addActionListener(new AL());
+		b1.addActionListener(new RefreshActionListener());
 
 		setSize(500, 500);
 		setVisible(true);
@@ -65,29 +64,25 @@ public class Task2 extends JFrame {
 	 * @author Mladen13
 	 *
 	 */
-	public class AL implements ActionListener {
+	public class RefreshActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			if (e.getSource() == b1) {
-                
-				if (cb1.isSelected() == true && cb2.isSelected() == true) {
-					f1 = new Font("Serif", Font.ITALIC | Font.BOLD, 20);
-					label.setFont(f1);
-				} else if (cb1.isSelected() == true
-						&& cb2.isSelected() == false) {
-					f1 = new Font("Serif", Font.BOLD, 20);
-					label.setFont(f1);
-				} else if (cb2.isSelected() == true
-						&& cb1.isSelected() == false) {
-					f1 = new Font("Serif", Font.ITALIC, 20);
-					label.setFont(f1);
-				} else {
-					f1 = new Font("Serif", Font.PLAIN, 20);
-					label.setFont(f1);
-				}
+			if (cb1.isSelected() && cb2.isSelected()) {
+				f1 = new Font("Serif", Font.ITALIC | Font.BOLD, 20);
+				label.setFont(f1);
+			} else if (cb1.isSelected()) {
+				f1 = new Font("Serif", Font.BOLD, 20);
+				label.setFont(f1);
+			} else if (cb2.isSelected() == true) {
+				f1 = new Font("Serif", Font.ITALIC, 20);
+				label.setFont(f1);
+			} else {
+				f1 = new Font("Serif", Font.PLAIN, 20);
+				label.setFont(f1);
 			}
+
 		}
 
 	}

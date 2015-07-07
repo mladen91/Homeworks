@@ -34,7 +34,7 @@ public class Task1 extends JFrame {
 		s1.setMajorTickSpacing(50);
 		s1.setPaintTicks(true);
 		// Adding change listener to slider
-		s1.addChangeListener(new CL());
+		s1.addChangeListener(new ChangeHandler());
 
 		setSize(500, 500);
 		setVisible(true);
@@ -53,7 +53,7 @@ public class Task1 extends JFrame {
 	 * @author Mladen13
 	 *
 	 */
-	public class CL implements ChangeListener {
+	public class ChangeHandler implements ChangeListener {
 
 		@Override
 		public void stateChanged(ChangeEvent e) {
