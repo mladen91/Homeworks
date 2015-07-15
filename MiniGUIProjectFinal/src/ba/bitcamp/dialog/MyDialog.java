@@ -1,9 +1,13 @@
 package ba.bitcamp.dialog;
 
 import java.awt.BorderLayout;
+import java.awt.Desktop;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,6 +37,7 @@ public class MyDialog extends JDialog {
 	private JButton multiPlayer = new JButton("Multiplayer");
 	private JButton exit = new JButton("Exit Application");
 	private JButton highScore = new JButton("Highscore");
+	private JButton link = new JButton("Source code link");
 	private boolean isSinglePlayer = true;
 	private boolean isMultiPlayer = true;
 
@@ -65,21 +70,23 @@ public class MyDialog extends JDialog {
 		setLayout(new GridLayout(2, 1));
 		add(labelPanel);
 		labelPanel.add(backgroundLabel);
-		backgroundLabel.setIcon(new ImageIcon(
-				"src/ba/bitcamp/startgame/snake1.png"));
+		backgroundLabel.setIcon(new ImageIcon(MyDialog.class
+				.getResource("/ba/bitcamp/startgame/snake1.png")));
 
 		add(buttonPanel);
 
-		buttonPanel.setLayout(new GridLayout(4, 1));
+		buttonPanel.setLayout(new GridLayout(5, 1));
 		buttonPanel.add(singlePlayer);
 		buttonPanel.add(multiPlayer);
 		buttonPanel.add(highScore);
+		buttonPanel.add(link);
 		buttonPanel.add(exit);
 
 		singlePlayer.addActionListener(new ButtonHandler());
 		multiPlayer.addActionListener(new ButtonHandler());
 		highScore.addActionListener(new ButtonHandler());
 		exit.addActionListener(new ButtonHandler());
+		link.addActionListener(new ButtonHandler());
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setSize(200, 300);
@@ -114,6 +121,20 @@ public class MyDialog extends JDialog {
 
 				new HighScoreDialog();
 				dispose();
+			} else if (e.getSource() == link) {
+
+				try {
+					Desktop.getDesktop()
+							.browse(new URI(
+									"https://github.com/mladen91/homeworkMentorship/tree/miniGUIProject/MiniGUIProjectFinal/src/ba/bitcamp"));
+					System.exit(0);
+				} catch (IOException ex) {
+
+					ex.printStackTrace();
+				} catch (URISyntaxException ex) {
+
+					ex.printStackTrace();
+				}
 			}
 
 		}
@@ -152,7 +173,7 @@ public class MyDialog extends JDialog {
 			});
 			// Reading from file, and setting text to that value because it
 			// represents highscore
-			TextIO.readFile("src/ba/bitcamp/highscore/highscore");
+			TextIO.readFile("/ba/bitcamp/highscore/highscore");
 			l.setText("Snake Highscore: " + TextIO.getln());
 			l.setHorizontalAlignment(SwingConstants.CENTER);
 			setModalityType(ModalityType.APPLICATION_MODAL);

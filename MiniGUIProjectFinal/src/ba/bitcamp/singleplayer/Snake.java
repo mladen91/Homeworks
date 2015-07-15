@@ -63,14 +63,7 @@ public class Snake extends JPanel {
 		setFocusable(true);
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		// Setting snake size to 3
-		size = 3;
-		// This will make snake on the beginning of the game
-		for (int i = 0; i < size; i++) {
-			snakeX[i] = 50 - i * TILESIZE;
-			snakeY[i] = 50;
-		}
-		// Calling method that will set food on random panel position
-		generateFood();
+		gameInit();
 		// Initializing timer with action listener
 		t = new Timer(delay, new ActionListener() {
 
@@ -91,6 +84,17 @@ public class Snake extends JPanel {
 		});
 		// Starting timer
 		t.start();
+
+	}
+
+	public void gameInit() {
+		size = 3;
+		// This will make snake on the beginning of the game
+		for (int i = 0; i < size; i++) {
+			snakeX[i] = 50 - i * TILESIZE;
+			snakeY[i] = 50;
+		}
+		generateFood();
 
 	}
 
@@ -220,17 +224,23 @@ public class Snake extends JPanel {
 	 */
 	private void checkCollision() {
 
+		int choice;
 		for (int i = size; i > 0; i--) {
 
 			if ((i > 4) && (snakeX[0] == snakeX[i]) && (snakeY[0] == snakeY[i])
 					|| snakeY[0] >= HEIGHT || snakeY[0] < 0
 					|| snakeX[0] >= WIDTH || snakeX[0] < 0) {
-				JOptionPane.showMessageDialog(null,
-						"Game Over! Your final score is: " + score);
 
 				updateHighscore();
+				choice = JOptionPane.showConfirmDialog(null,
+						"Game Over! Your final score is: " + score
+						+ "\n Do you want to play again?");
 
-				System.exit(0);
+				if (choice == JOptionPane.YES_OPTION) {
+					gameInit();
+				} else if (choice == JOptionPane.NO_OPTION) {
+					System.exit(0);
+				}
 			}
 		}
 	}
@@ -240,10 +250,10 @@ public class Snake extends JPanel {
 	 */
 	private void updateHighscore() {
 
-		TextIO.readFile("src/ba/bitcamp/highscore/highscore");
+		TextIO.readFile("/ba/bitcamp/highscore/highscore");
 
 		if (score > TextIO.getlnInt()) {
-			TextIO.writeFile("src/ba/bitcamp/highscore/highscore");
+			TextIO.writeFile("/ba/bitcamp/highscore/highscore");
 			TextIO.putln(score);
 		}
 

@@ -76,22 +76,7 @@ public class SnakeMultiplayer extends JPanel {
 		addKeyListener(new KeyHandler());
 		setFocusable(true);
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		// Setting snake size to 3
-		size = 3;
-		// Setting snake 2 size to 3
-		size2 = 3;
-		// This will make snake on the beginning of the game
-		for (int i = 0; i < size; i++) {
-			snakeX[i] = 50 - i * TILESIZE;
-			snakeY[i] = 50;
-		}
-		// This will make snake 2
-		for (int i = 0; i < size2; i++) {
-			snakeX2[i] = 50 - i * TILESIZE;
-			snakeY2[i] = 70;
-		}
-		// Calling method that will set food on random panel position
-		generateFood();
+		gameInit();
 		// Initializing timer with action listener
 		t = new Timer(DELAY, new ActionListener() {
 
@@ -116,6 +101,28 @@ public class SnakeMultiplayer extends JPanel {
 		// Starting timer
 		t.start();
 
+	}
+
+	/**
+	 * This method initializes start of game
+	 */
+	public void gameInit() {
+		// Setting snake size to 3
+		size = 3;
+		// Setting snake 2 size to 3
+		size2 = 3;
+		// This will make snake on the beginning of the game
+		for (int i = 0; i < size; i++) {
+			snakeX[i] = 50 - i * TILESIZE;
+			snakeY[i] = 50;
+		}
+		// This will make snake 2
+		for (int i = 0; i < size2; i++) {
+			snakeX2[i] = 50 - i * TILESIZE;
+			snakeY2[i] = 70;
+		}
+		// Calling method that will set food on random panel position
+		generateFood();
 	}
 
 	/**
@@ -322,7 +329,9 @@ public class SnakeMultiplayer extends JPanel {
 	 * This method checks if our snake hits into wall, or it hits her tail.
 	 */
 	private void checkCollision() {
-
+		int choiceP1Won;
+		int choiceEven;
+		int choiceP2Won;
 		// Checking if snake hits itself
 		for (int i = size; i > 0; i--) {
 
@@ -332,16 +341,27 @@ public class SnakeMultiplayer extends JPanel {
 				// If snake hits itself, but score is larger than snake 2 score,
 				// result will be even
 				if (size > size2) {
-					JOptionPane.showMessageDialog(null,
+					choiceEven = JOptionPane.showConfirmDialog(null,
 							"Game Over! It's even! " + " \nPlayer 1 [" + score
-									+ " : " + score2 + "] 2 Player");
-					System.exit(0);
+									+ " : " + score2 + "] 2 Player"
+									+ "\nDo you want to play again?");
+
+					if (choiceEven == JOptionPane.YES_OPTION) {
+						gameInit();
+					} else if (choiceEven == JOptionPane.NO_OPTION) {
+						System.exit(0);
+					}
 				} else {
 					// In this case, player 2 won.
-					JOptionPane.showMessageDialog(null,
+					choiceP2Won = JOptionPane.showConfirmDialog(null,
 							"Game Over! Player 2 won! " + " \nPlayer 1 ["
-									+ score + " : " + score2 + "] 2 Player");
-					System.exit(0);
+									+ score + " : " + score2 + "] 2 Player"
+									+ "\nDo you want to play again?");
+					if (choiceP2Won == JOptionPane.YES_OPTION) {
+						gameInit();
+					} else if (choiceP2Won == JOptionPane.NO_OPTION) {
+						System.exit(0);
+					}
 				}
 
 			}
@@ -355,15 +375,26 @@ public class SnakeMultiplayer extends JPanel {
 				// If snake hits itself, but score is larger than snake 1 score,
 				// result will be even
 				if (size2 > size) {
-					JOptionPane.showMessageDialog(null,
+					choiceEven = JOptionPane.showConfirmDialog(null,
 							"Game Over! It's even! " + " \nPlayer 1 [" + score
-									+ " : " + score2 + "] 2 Player");
-					System.exit(0);
+									+ " : " + score2 + "] 2 Player"
+									+ "\nDo you want to play again?");
+					if (choiceEven == JOptionPane.YES_OPTION) {
+						gameInit();
+					} else if (choiceEven == JOptionPane.NO_OPTION) {
+						System.exit(0);
+					}
+
 				} else {
-					JOptionPane.showMessageDialog(null,
+					choiceP1Won = JOptionPane.showConfirmDialog(null,
 							"Game Over! Player 1 won! " + " \nPlayer 1 ["
-									+ score + " : " + score2 + "] 2 Player");
-					System.exit(0);
+									+ score + " : " + score2 + "] 2 Player"
+									+ "\nDo you want to play again?");
+					if (choiceP1Won == JOptionPane.YES_OPTION) {
+						gameInit();
+					} else if (choiceP1Won == JOptionPane.NO_OPTION) {
+						System.exit(0);
+					}
 				}
 			}
 		}
@@ -371,21 +402,36 @@ public class SnakeMultiplayer extends JPanel {
 		for (int i = 0; i < size; i++) {
 			if (snakeX[0] == snakeX2[0] && snakeY[0] == snakeY2[0]) {
 				if (size > size2) {
-					JOptionPane.showMessageDialog(null,
+					choiceP1Won = JOptionPane.showConfirmDialog(null,
 							"Game Over! Player 1 won! " + " \nPlayer 1 ["
-									+ score + " : " + score2 + "] 2 Player");
-					System.exit(0);
+									+ score + " : " + score2 + "] 2 Player"
+									+ "\nDo you want to play again?");
+					if (choiceP1Won == JOptionPane.YES_OPTION) {
+						gameInit();
+					} else if (choiceP1Won == JOptionPane.NO_OPTION) {
+						System.exit(0);
+					}
 				} else if (size < size2) {
 					// In this case, player 2 won.
-					JOptionPane.showMessageDialog(null,
+					choiceP2Won = JOptionPane.showConfirmDialog(null,
 							"Game Over! Player 2 won! " + " \nPlayer 1 ["
-									+ score + " : " + score2 + "] 2 Player");
-					System.exit(0);
+									+ score + " : " + score2 + "] 2 Player"
+									+ "\nDo you want to play again?");
+					if (choiceP2Won == JOptionPane.YES_OPTION) {
+						gameInit();
+					} else if (choiceP2Won == JOptionPane.NO_OPTION) {
+						System.exit(0);
+					}
 				} else {
-					JOptionPane.showMessageDialog(null,
+					choiceEven = JOptionPane.showConfirmDialog(null,
 							"Game Over! It's even! " + " \nPlayer 1 [" + score
-									+ " : " + score2 + "] 2 Player");
-					System.exit(0);
+									+ " : " + score2 + "] 2 Player"
+									+ "\nDo you want to play again?");
+					if (choiceEven == JOptionPane.YES_OPTION) {
+						gameInit();
+					} else if (choiceEven == JOptionPane.NO_OPTION) {
+						System.exit(0);
+					}
 				}
 			}
 		}
