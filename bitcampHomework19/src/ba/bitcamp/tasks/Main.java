@@ -15,7 +15,7 @@ public class Main {
 		System.out.println(ld2.getMiddle());
 		System.out.println(ld2.getLast());
 		System.out.println(ld2);
-		ld2.add(3, 1);
+		ld2.add(3.0, 1);
 		System.out.println(ld2);
 		
 		

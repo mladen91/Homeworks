@@ -38,7 +38,7 @@ public class LinkedListDouble {
 	 * @param element
 	 *            - represents values that will be added
 	 */
-	public void add(double element) {
+	public void add(Double element) {
 		if (start == null) {
 			start = new Node(element);
 		} else {
@@ -56,6 +56,15 @@ public class LinkedListDouble {
 	 *            - represents index of element that will be deleted
 	 */
 	public void remove(int index) {
+
+		if (start == null) {
+			System.out.println("Nothing to remove");
+		}
+
+		if (index > size() - 1) {
+			throw new IndexOutOfBoundsException();
+		}
+
 		Node temp = start;
 
 		for (int i = 0; i < index; i++) {
@@ -75,7 +84,16 @@ public class LinkedListDouble {
 	 *            - represents index where value will be taken
 	 * @return - value of index
 	 */
-	public double get(int index) {
+	public Double get(int index) {
+
+		if (start == null) {
+			return null;
+		}
+
+		if (index > size() - 1) {
+			throw new IndexOutOfBoundsException();
+		}
+
 		Node temp = start;
 
 		for (int i = 0; i < index; i++) {
@@ -99,12 +117,20 @@ public class LinkedListDouble {
 	 * 
 	 * @return - middle element if possible, if not first element from left side
 	 */
-	public double getMiddle() {
-		if (size() % 2 == 1) {
-			return get(size() / 2);
-		} else {
-			return get(size() / 2 - 1);
+	public Double getMiddle() {
+		Node last = start.getNext();
+		Node middle = start;
+
+		while (last.getNext() != null) {
+			if (last.getNext().getNext() != null) {
+				middle = middle.getNext();
+				last = last.getNext().getNext();
+			} else {
+				middle = middle.getNext();
+				last = last.getNext();
+			}
 		}
+		return middle.getValue();
 	}
 
 	/**
@@ -112,8 +138,12 @@ public class LinkedListDouble {
 	 * 
 	 * @return - first element value
 	 */
-	public double getFirst() {
-		return start.getValue();
+	public Double getFirst() {
+		if (start == null) {
+			return null;
+		} else {
+			return start.getValue();
+		}
 	}
 
 	/**
@@ -121,7 +151,7 @@ public class LinkedListDouble {
 	 * 
 	 * @return - last list element
 	 */
-	public double getLast() {
+	public Double getLast() {
 		return getLastNode().getValue();
 	}
 
@@ -129,11 +159,7 @@ public class LinkedListDouble {
 	 * This method will delete first element from linked list
 	 */
 	public void deleteFirst() {
-		if (start == null) {
-			return;
-		} else {
-			start = start.getNext();
-		}
+		remove(0);
 	}
 
 	/**
@@ -151,7 +177,7 @@ public class LinkedListDouble {
 	 * @param index
 	 *            - represents index where value will be added
 	 */
-	public void add(double d, int index) {
+	public void add(Double d, int index) {
 
 		Node temp = start;
 		int indexCounter = 0;
@@ -183,6 +209,7 @@ public class LinkedListDouble {
 
 			start = newNode;
 		}
+		counter++;
 
 	}
 
@@ -243,9 +270,9 @@ public class LinkedListDouble {
 	 */
 	public class Node {
 		private Node next;
-		private double value;
+		private Double value;
 
-		public Node(double value) {
+		public Node(Double value) {
 			this.value = value;
 		}
 
@@ -257,11 +284,11 @@ public class LinkedListDouble {
 			this.next = next;
 		}
 
-		public double getValue() {
+		public Double getValue() {
 			return value;
 		}
 
-		public void setValue(double value) {
+		public void setValue(Double value) {
 			this.value = value;
 		}
 
