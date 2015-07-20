@@ -128,7 +128,7 @@ public class DoubleQueueLink {
 		// Testing class
 		long start = System.currentTimeMillis();
 		DoubleQueueLink queue = new DoubleQueueLink();
-		for (int i = 0; i < 10000000; i++) {
+		for (int i = 0; i < 100000; i++) {
 			queue.add(15.5);
 		}
 

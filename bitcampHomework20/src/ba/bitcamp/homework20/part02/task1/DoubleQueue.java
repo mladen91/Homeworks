@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 public class DoubleQueue {
 	Double[] arr;
+	int size = 0;
 
 	/**
 	 * Default constructor that initializes array to null
@@ -27,6 +28,7 @@ public class DoubleQueue {
 		Double[] newArr = Arrays.copyOf(arr, arr.length + 1);
 		newArr[newArr.length - 1] = e;
 		arr = newArr;
+		size++;
 		return true;
 	}
 
@@ -38,14 +40,12 @@ public class DoubleQueue {
 	 */
 	public Double poll() {
 		if (arr.length == 0) {
-			return null;
+			throw new NoSuchElementException();
 		} else {
-			Double temp = arr[1];
-			Double[] newArr = Arrays.copyOfRange(arr, 1, arr.length);
-			newArr[0] = temp;
-			arr = newArr;
-
-			return arr[1];
+			double value = arr[0];
+			arr = Arrays.copyOfRange(arr, 1, arr.length);
+			size--;
+			return value;
 		}
 	}
 
@@ -61,6 +61,11 @@ public class DoubleQueue {
 		} else {
 			return arr[0];
 		}
+	}
+
+	public boolean isEmpty() {
+		size = 0;
+		return arr.length == 0;
 	}
 
 	/**
@@ -89,10 +94,16 @@ public class DoubleQueue {
 	 */
 	public boolean offer(Double e) {
 
-		Double[] newArr = Arrays.copyOf(arr, arr.length + 1);
-		newArr[newArr.length - 1] = e;
-		arr = newArr;
+		if (size == arr.length) {
+			ensureCapacity();
+		}
+		arr[size++] = e;
 		return true;
+	}
+
+	private void ensureCapacity() {
+		int newSize = arr.length * 2;
+		arr = Arrays.copyOf(arr, newSize);
 	}
 
 	/**
@@ -100,13 +111,15 @@ public class DoubleQueue {
 	 * 
 	 * @return
 	 */
-	public Double remove() {
-		Double temp = arr[1];
-		Double[] newArr = Arrays.copyOfRange(arr, 1, arr.length);
-		newArr[0] = temp;
-		arr = newArr;
+	public Double remove() throws NoSuchElementException {
 
-		return arr[1];
+		if (arr.length == 0) {
+			throw new NoSuchElementException();
+		} else {
+			double value = arr[0];
+			arr = Arrays.copyOfRange(arr, 1, arr.length);
+			return value;
+		}
 	}
 
 	public String toString() {
@@ -118,13 +131,13 @@ public class DoubleQueue {
 		// Testing class
 		long start = System.currentTimeMillis();
 		DoubleQueue queue = new DoubleQueue();
-		for (int i = 0; i < 1000000; i++) {
+		for (int i = 0; i < 100000; i++) {
 			queue.add(13.0);
 		}
-		while (queue.arr != null) {
+		while (!queue.isEmpty()) {
 			queue.poll();
 		}
-		System.out.println(queue);
+
 		System.out.println("It took: " + (System.currentTimeMillis() - start)
 				+ " millis");
 	}

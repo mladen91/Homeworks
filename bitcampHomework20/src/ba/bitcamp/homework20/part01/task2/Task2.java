@@ -18,7 +18,6 @@ public class Task2 {
 	 * 
 	 * @param e
 	 *            The String to be pushed onto this stack.
-	 * @return The String argument.
 	 */
 	public void push(String e) {
 
@@ -91,21 +90,15 @@ public class Task2 {
 	 *         on the stack.
 	 */
 	public int search(String s) {
-		if (start == null) {
-			return -1;
-		}
-		int counter = 0;
-		Node temp = start;
-
-		while (temp.getNextNode() != null) {
-			counter++;
-			if (temp.getValue().equals(s)) {
-				return counter;
+		int position = 1;
+		Node tmp = start;
+		while (tmp != null) {
+			if (tmp.getValue().equals(s)) {
+				return position;
 			}
-			temp = temp.getNextNode();
-
+			position++;
+			tmp = tmp.getNextNode();
 		}
-
 		return -1;
 	}
 

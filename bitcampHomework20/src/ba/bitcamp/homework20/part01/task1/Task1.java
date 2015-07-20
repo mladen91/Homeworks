@@ -18,12 +18,12 @@ public class Task1 {
 	 * 
 	 * @param e
 	 *            The String to be pushed onto this stack.
-	 * @return The String argument.
 	 */
 	public void push(String e) {
 		String[] newArr = Arrays.copyOf(arr, arr.length + 1);
 		newArr[newArr.length - 1] = e;
 		arr = newArr;
+
 	}
 
 	/**
@@ -35,12 +35,14 @@ public class Task1 {
 	 *             If this stack is empty.
 	 */
 	public String pop() throws EmptyStackException {
+
 		if (arr.length == 0) {
 			throw new EmptyStackException();
+		} else {
+			String value = arr[arr.length - 1];
+			arr = Arrays.copyOf(arr, arr.length - 1);
+			return value;
 		}
-		arr = Arrays.copyOf(arr, arr.length - 1);
-
-		return arr[arr.length - 1];
 	}
 
 	/**
@@ -84,7 +86,7 @@ public class Task1 {
 	public int search(String s) {
 		for (int i = arr.length - 1; i >= 0; i--) {
 			if (arr[i].equals(s)) {
-				return i;
+				return arr.length - i;
 			}
 		}
 		return -1;
@@ -99,12 +101,14 @@ public class Task1 {
 		// Testing class
 		long start = System.currentTimeMillis();
 		Task1 stack = new Task1();
-		for (int i = 0; i < 10000000; i++) {
+		for (int i = 0; i < 100000; i++) {
 			stack.push("Names");
 		}
+
 		while (!stack.isEmpty()) {
 			stack.pop();
 		}
+
 		System.out.println("It took: " + (System.currentTimeMillis() - start)
 				+ " millis");
 
