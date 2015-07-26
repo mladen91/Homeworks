@@ -111,6 +111,8 @@ public class FileDistribution extends JFrame {
 					}
 					listFiles();
 					label.setText(currentFolderFiles.getName());
+					UploadedFile file = new UploadedFile(jfc.getName(f),
+							getExtension(s), f.getTotalSpace(), f);
 
 				}
 			}
