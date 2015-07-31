@@ -74,9 +74,9 @@ public class HtmlServer {
 				int i = 0;
 				while (it.hasNext()) {
 					it.next();
-					htmlDoc += "Site link: " + "<a href =" + linkSet.get(i)
-							+ ">" + linkSet.get(i) + "</a> " + "Site Name: "
-							+ nameSet.get(i) + "<br>\n";
+					htmlDoc += "Site link: " + "<a href =" + "http://"
+							+ linkSet.get(i) + ">" + linkSet.get(i) + "</a> "
+							+ "Site Name: " + nameSet.get(i) + "<br>\n";
 					i++;
 				}
 

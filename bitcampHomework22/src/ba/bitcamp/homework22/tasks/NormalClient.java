@@ -19,7 +19,7 @@ public class NormalClient {
 		try {
 			System.out.println("Client started");
 
-			Socket client = new Socket("192.168.0.101", 5555);
+			Socket client = new Socket("localhost", 5555);
 			System.out.println("Client connected");
 
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
@@ -29,15 +29,20 @@ public class NormalClient {
 			System.out.println("Insert link and site name: ");
 			String s = in.nextLine();
 
-			if (s.length() > 0 && s.contains(" ")) {
-				bw.newLine();
-				bw.write(s);
-				bw.close();
+			while (true) {
+				if (s.length() > 0 && s.contains(" ")) {
+					bw.newLine();
+					bw.write(s);
+					bw.close();
+				} else {
+					System.out.println("Site doesn't exists!");
+					s = in.nextLine();
+				}
+
 			}
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 
 	}
