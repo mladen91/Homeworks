@@ -30,9 +30,9 @@ public class Client {
             //Inserting path which will be send to server
 			Scanner in = new Scanner(System.in);
 			System.out.println("Insert path: ");
-			String s = in.nextLine();
+			String line = in.nextLine();
 
-			bw.write(s);
+			bw.write(line);
 			bw.newLine();
 			bw.flush();
 

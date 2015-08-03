@@ -31,16 +31,11 @@ public class Server {
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
 					client.getOutputStream()));
 			//Reading line from client
-			String s = br.readLine();
+			String line = br.readLine();
             //Making new file using path given
-			File f = new File(s);
+			File f = new File(line);
             //Checking if file exists 
-			if (f.exists()) {
-				bw.write("1");
-
-			} else {
-				bw.write("0");
-			}
+			bw.write( f.exists() ? "1" : "0");
 			bw.newLine();
 			bw.flush();
 
