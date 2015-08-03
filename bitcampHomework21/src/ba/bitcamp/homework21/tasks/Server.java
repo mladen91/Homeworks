@@ -114,7 +114,7 @@ public class Server extends JFrame {
 	 * @throws IOException
 	 */
 	public void checkLine(String s) throws IOException {
-		if (s.contains("/web ")) {
+		if (s.startsWith("/web ")) {
 			try {
 				Desktop.getDesktop().browse(
 						new URI("http://"
@@ -122,16 +122,16 @@ public class Server extends JFrame {
 			} catch (URISyntaxException e) {
 				e.printStackTrace();
 			}
-		} else if (s.contains("/open ")) {
+		} else if (s.startsWith("/open ")) {
 			String path = s.substring(s.indexOf(" ") + 1, s.length());
 			Desktop.getDesktop().open(new File(path));
 
-		} else if (s.contains("/delete ")) {
+		} else if (s.startsWith("/delete ")) {
 			String path = s.substring(s.indexOf(" ") + 1, s.length());
 			File f = new File(path);
 			f.delete();
 
-		} else if (s.contains("/list ")) {
+		} else if (s.startsWith("/list ")) {
 			String path = s.substring(s.indexOf(" ") + 1, s.length());
 			File f = new File(path);
 			String[] arr = f.list();

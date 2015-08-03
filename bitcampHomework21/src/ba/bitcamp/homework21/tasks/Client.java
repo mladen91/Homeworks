@@ -65,7 +65,7 @@ public class Client extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// Creating client
-		client = new Socket("192.168.0.100", 8888);
+		client = new Socket("localhost", 8888);
 		// Adding gui components to frame
 		setLayout(new BorderLayout());
 		add(panel, BorderLayout.CENTER);
@@ -106,7 +106,7 @@ public class Client extends JFrame {
 	 * @throws IOException
 	 */
 	public void checkLine(String s) throws IOException {
-		if (s.contains("/web ")) {
+		if (s.startsWith("/web ")) {
 			try {
 				Desktop.getDesktop().browse(
 						new URI("http://"
@@ -114,16 +114,16 @@ public class Client extends JFrame {
 			} catch (URISyntaxException e) {
 				e.printStackTrace();
 			}
-		} else if (s.contains("/open ")) {
+		} else if (s.startsWith("/open ")) {
 			String path = s.substring(s.indexOf(" ") + 1, s.length());
 			Desktop.getDesktop().open(new File(path));
 
-		} else if (s.contains("/delete ")) {
+		} else if (s.startsWith("/delete ")) {
 			String path = s.substring(s.indexOf(" ") + 1, s.length());
 			File f = new File(path);
 			f.delete();
 
-		} else if (s.contains("/list ")) {
+		} else if (s.startsWith("/list ")) {
 			String path = s.substring(s.indexOf(" ") + 1, s.length());
 			File f = new File(path);
 			String[] arr = f.list();
