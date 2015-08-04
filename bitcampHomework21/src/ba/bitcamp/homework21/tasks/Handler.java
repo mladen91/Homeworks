@@ -19,7 +19,7 @@ public class Handler {
 	}
 
 	public void checkLine() throws IOException {
-		if (line.startsWith("/web ")) {
+		if ("/web ".startsWith(line)) {
 			try {
 				Desktop.getDesktop().browse(
 						new URI("http://"
@@ -28,16 +28,16 @@ public class Handler {
 			} catch (URISyntaxException e) {
 				e.printStackTrace();
 			}
-		} else if (line.startsWith("/open ")) {
+		} else if ("/open ".startsWith(line)) {
 			String path = line.substring(line.indexOf(" ") + 1, line.length());
 			Desktop.getDesktop().open(new File(path));
 
-		} else if (line.startsWith("/delete ")) {
+		} else if ("/delete ".startsWith(line)) {
 			String path = line.substring(line.indexOf(" ") + 1, line.length());
 			File f = new File(path);
 			f.delete();
 
-		} else if (line.startsWith("/list ")) {
+		} else if ("/list ".startsWith(line)) {
 			String path = line.substring(line.indexOf(" ") + 1, line.length());
 			File f = new File(path);
 			String[] arr = f.list();
