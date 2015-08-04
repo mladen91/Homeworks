@@ -2,22 +2,16 @@ package ba.bitcamp.homework21.tasks;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-
 import java.net.Socket;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 
 import javax.swing.JButton;
@@ -46,7 +40,7 @@ public class Client extends JFrame {
 	Socket client = null;
 	BufferedWriter writer = null;
 	BufferedReader reader = null;
-	String s = "";
+	String line = "";
 
 	/**
 	 * Constructor that creates client and gui application with components on
@@ -90,49 +84,13 @@ public class Client extends JFrame {
 		writer = new BufferedWriter(new OutputStreamWriter(
 				client.getOutputStream()));
 		// Reading lines from client and appending them to text area
-		while ((s = reader.readLine()) != null) {
-			if (s.length() > 0) {
+		while ((line = reader.readLine()) != null) {
+			if (line.length() > 0) {
 
-				checkLine(s);
+				Handler h = new Handler(line, area);
+				h.checkLine();
+
 			}
-		}
-	}
-
-	/**
-	 * This method checks if our line contains some of wanted inputs
-	 * 
-	 * @param s
-	 *            - represents one line
-	 * @throws IOException
-	 */
-	public void checkLine(String s) throws IOException {
-		if (s.startsWith("/web ")) {
-			try {
-				Desktop.getDesktop().browse(
-						new URI("http://"
-								+ s.substring(s.indexOf(" ") + 1, s.length())));
-			} catch (URISyntaxException e) {
-				e.printStackTrace();
-			}
-		} else if (s.startsWith("/open ")) {
-			String path = s.substring(s.indexOf(" ") + 1, s.length());
-			Desktop.getDesktop().open(new File(path));
-
-		} else if (s.startsWith("/delete ")) {
-			String path = s.substring(s.indexOf(" ") + 1, s.length());
-			File f = new File(path);
-			f.delete();
-
-		} else if (s.startsWith("/list ")) {
-			String path = s.substring(s.indexOf(" ") + 1, s.length());
-			File f = new File(path);
-			String[] arr = f.list();
-			for (int i = 0; i < arr.length; i++) {
-				area.append(arr[i] + "\n");
-			}
-
-		} else {
-			area.append("Server: " + s + "\n");
 		}
 	}
 
