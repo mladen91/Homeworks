@@ -1,0 +1,5 @@
+Informacioni sistem se može definisati na mnogo naèina, ovisno o njihovoj primjeni i potrebama, ali iz svega možemo izvuæi opštu definiciju koja kaže da informacioni sistem predstavlja integrisani skup komponenti za skupljanje, snimanje, èuvanje, obradu i prenošenje informacija. 
+Poslovne kompanije i druge vrste organizacija danas zavise od informacionih sistema za upravljanje svojim operacijama i djelovanjima, održavanje kompetitivnosti na tržištu, ponudu raznih usluga i unaprijeðivanje liènih sposobnosti i kapaciteta. 
+Sve veæi razvoj informacionih sistema doveo je do prenosa uticaja na društvo. 
+Ubrzao se i proces obavljanja svakodnevnih aktivnosti, pobošljanje razvoja ponude i potražnje, kao i naèini shvatanja rada. 
+Za primjer, moderne korporacije zavise od raèunarskih informacionih sistema da bi obraðivale svoje finansijske raèune i poslovne transakcije, i upravljale ljudskim resursima; opæinske uprave zavise od informacionih sistema za ponudu osnovnih usluga svojim graðanima.
