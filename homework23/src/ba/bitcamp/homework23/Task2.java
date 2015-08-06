@@ -24,7 +24,7 @@ public class Task2 extends JFrame {
 	private static BufferedImage img = null;
 	private JPanel panel;
 	private static LinkedBlockingQueue<Runnable> queue;
-	private static ArrayList<Worker> slaves;
+	private static ArrayList<Worker> workers;
 	private static int a = 0;
 	private static int b = 10;
 
@@ -57,7 +57,7 @@ public class Task2 extends JFrame {
 
 		}
 
-		slaves = new ArrayList<>();
+		workers = new ArrayList<>();
 		// Adding workers
 		for (int i = 0; i < 8; i++) {
 			Worker s = new Worker();
@@ -68,7 +68,7 @@ public class Task2 extends JFrame {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			slaves.add(s);
+			workers.add(s);
 		}
 
 	}
