@@ -16,23 +16,23 @@ import java.util.concurrent.LinkedBlockingQueue;
  *
  */
 public class Task1 {
-    //Declaring global variables
+	// Declaring global variables
 	private static BufferedReader br = null;
 	private static Integer counter = 0;
 	private static LinkedBlockingQueue<Runnable> queue;
 	private static ArrayList<Producer> producers;
-	private static ArrayList<String> firstLetters;
+	private static char firstLetter = ' ';
 
 	public static void main(String[] args) {
 
 		queue = new LinkedBlockingQueue<Runnable>();
-		firstLetters = new ArrayList<String>();
+
 		try {
 			br = new BufferedReader(new FileReader(new File("text.txt")));
+			firstLetter = (char) br.read();
 			String lineTask = "";
 			// Reading lines from file, and adding them to queue
 			while ((lineTask = br.readLine()) != null) {
-				firstLetters.add(Character.toString(lineTask.charAt(0)));
 
 				queue.add(new Task(lineTask));
 			}
@@ -52,8 +52,7 @@ public class Task1 {
 			}
 
 			System.out.println("There is " + counter
-					+ " repetitions of letter " + firstLetters.get(0)
-					+ " in file");
+					+ " repetitions of letter " + firstLetter + " in file");
 
 		} catch (FileNotFoundException e) {
 
@@ -106,7 +105,7 @@ public class Task1 {
 
 			for (int i = 0; i < line.length(); i++) {
 
-				if (firstLetters.get(0).equalsIgnoreCase(
+				if (Character.toString(firstLetter).equalsIgnoreCase(
 						Character.toString(line.charAt(i)))) {
 					synchronized (counter) {
 						counter++;
