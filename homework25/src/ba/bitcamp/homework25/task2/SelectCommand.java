@@ -21,7 +21,7 @@ public class SelectCommand {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			conn = DriverManager
-					.getConnection("jdbc:sqlite:C:/Users/Mladen13/Desktop/database/products.db");
+					.getConnection("jdbc:sqlite:src/ba/bitcamp/homework25/databaseFiles/products.db");
 			System.out.println("Connection established");
 		} catch (ClassNotFoundException e1) {
 			System.err.println("JDBC library is not loaded.");

@@ -61,7 +61,7 @@ public class GuiSelect extends JFrame {
 			try {
 				Class.forName("org.sqlite.JDBC");
 				conn = DriverManager
-						.getConnection("jdbc:sqlite:C:/Users/Mladen13/Desktop/database/complaintsBook.db");
+						.getConnection("jdbc:sqlite:src/ba/bitcamp/homework25/databaseFiles/complaintsBook.db");
 				System.out.println("Connection established");
 			} catch (ClassNotFoundException e1) {
 				System.err.println("JDBC library is not loaded.");
