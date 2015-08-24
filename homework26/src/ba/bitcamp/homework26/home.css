@@ -1,6 +1,6 @@
 h1 {
 	border:1px solid black;
-	background-image: url("http://coverjunction.s3.amazonaws.com/manual/low/soccer1.jpg");
+	background-image: url("img/club.jpg");
 	font-size: 50px;
 	margin:0px;
 	color:red;
@@ -33,7 +33,7 @@ img {
 }
 h2 {
 	font-size:40px;
-	background-image:url("http://hdwpics.com/images/29AC9AC0598A/Fc-Barcelona.jpg");
+	background-image:url("img/barca12.jpg");
 	margin:0;
 	color:white;
 	
