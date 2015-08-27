@@ -1,0 +1,41 @@
+h1 {
+	border:1px solid black;
+	background-image: url("img/club.jpg");
+	font-size: 50px;
+	margin:0px;
+	color:red;
+}
+
+#menu a{
+	
+	text-decoration: none;
+	font-size: 30px;
+	margin-right: 40px;
+	text-align: center;
+	color: red;
+}
+#menu {
+	background-color: blue;
+}
+
+#both {
+	display: flex;
+
+}
+img {
+	height: 350px;
+	width: 630px;
+	border:1px solid black;
+}
+#cover {
+	display:inline-block;
+	width:1260px;
+}
+h2 {
+	font-size:40px;
+	background-image:url("img/barca12.jpg");
+	margin:0;
+	color:white;
+	
+}
+
